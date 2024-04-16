@@ -1,11 +1,16 @@
-import ModelBase from "./ModelBase";
+import { ModelBase } from "./ModelBase";
 import { Product } from "./Product";
-import { PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { ProductCategory } from "./ProductCategory";
+import { Promotion } from "./Promotion";
+import { Shop } from "./Shop";
 
 
 export class Product extends ModelBase {
     @PrimaryGeneratedColumn()
+    ProductID;
+
+    @Column()
     ShopID;
 
     @Column()
@@ -18,33 +23,17 @@ export class Product extends ModelBase {
     ProductTitle;
 
     @Column()
-    description;
+    Description;
 
     // Define the many-to-one relationship with Shop
-    @ManyToOne(() => Shop, shop => shop.products)
-    shop;
+    @ManyToOne(() => Shop, shop => shop.ShopID)
+    ShopFk;
 
     // Define the one-to-many relationship with ProductCategory
-    @ManyToOne(() => ProductCategory, productCategory => productCategory.products)
-    productCategory;
+    @ManyToOne(() => ProductCategory, productCategory => productCategory.ProductCategoryID)
+    ProductCategoryFk;
 
-    @ManyToMany(() => Promotion)
-    @JoinTable()
-    promotions;
-
+    @OneToMany(() => Promotion, promotion, promotion.PromotionID)
+    //@JoinTable()
+    PromotionFk;
 }
-
-
-
-
-/*
-public long ProductID { get; set; }
-        public long ShopID { get; set; }
-        public long ProductCategoryID { get; set; }
-        public long ProductCode{ get; set; }
-        public string ProductTitle { get; set; }
-        public string description{ get; set; }
-
-
-        public List<Promotion> promotionFk { get; set; }
-        */

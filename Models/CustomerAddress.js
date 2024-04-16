@@ -1,19 +1,24 @@
-const ModelBase = require('./ModelBase');
-const Customer = require('./Customer');
+import { Column,PrimaryGeneratedColumn,OneToOne } from 'typeorm';
+import { ModelBase } from './ModelBase';
+import { Customer } from './Customer';
 
-class CustomerAddress extends ModelBase 
+export class CustomerAddress extends ModelBase 
 {
-    constructor() 
-    {
-        super(); 
+        @PrimaryGeneratedColumn()
+        CustomerAddressID;
 
-        this.customerAddressID = null;
-        this.customerID = null; 
-        this.addressTitle = ''; 
-        this.customerLatitude = 0.0; 
-        this.customerLongitude = 0.0;
-        this.customerFk = new Customer(); 
-    }
+        @Column()
+        CustomerID;
+
+        @Column() 
+        AddressTitle;
+        
+        @Column()
+        CustomerLatitude;
+        
+        @Column()
+        CustomerLongitude;
+
+        @OneToOne(() => Customer, customer, customer.CustomerID)
+        CustomerFk;
 }
-
-module.exports = CustomerAddress;

@@ -6,4 +6,3 @@ export class ModelBase {
     @Column()
     IsDeleted;
 }
-// export default ModelBase;

@@ -1,4 +1,4 @@
-import { PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, OneToMany,OneToOne,ManyToOne } from 'typeorm';
 import { ModelBase } from './ModelBase';
 import { User } from './User';
 import { Product } from './Product';
@@ -46,15 +46,16 @@ export class Shop extends ModelBase {
     UserFk;
 
     // Define the one-to-many relationship with Product
-    @OneToMany(() => Product, product => product.shop)
-    products;
+    @OneToMany(() => Product, product => product.ShopID)
+    ProductsFk;
     
-    @Column()
-    shopCategoryFk;
+    @ManyToOne(() => ShopCategory , shopcategory, shopcategory.ShopCategoryID)
+    ShopCategoryFk;
+
+    @OneToOne(() => User, user,user.UserID)
+    UserFk;
     
     // Define the one-to-many relationship with Promotion
-    @OneToMany(() => Promotion, promotions => promotions.shop)
-    promotions;
+    //@OneToMany(() => Promotion, promotions => promotions.shop)
+    //promotions;
 }
-
-// module.exports = Shop;
