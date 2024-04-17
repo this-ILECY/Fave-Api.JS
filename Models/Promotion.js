@@ -39,6 +39,6 @@ export class Promotion extends ModelBase {
     ShopFk;
 
     @ManyToMany(() => Product, ProductFk => ProductFk.ProductID)
-    //@JoinTable()
+    @JoinTable()
     ProductFk;
 }

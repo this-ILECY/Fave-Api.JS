@@ -33,7 +33,7 @@ export class Product extends ModelBase {
     @ManyToOne(() => ProductCategory, ProductCategoryFk => ProductCategoryFk.ProductCategoryID)
     ProductCategoryFk;
 
-    @OneToMany(() => Promotion,PromotionFk => PromotionFk.PromotionID)
-    //@JoinTable()
+    @ManyToMany(() => Promotion,PromotionFk => PromotionFk.PromotionID)
+    @JoinTable()
     PromotionFk;
 }
