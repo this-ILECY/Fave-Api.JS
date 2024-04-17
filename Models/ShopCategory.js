@@ -13,6 +13,6 @@ export class ShopCategory extends ModelBase
         @Column()
         ShopCategoryDescription; 
 
-        @OneToMany(() => Shop, shop, shop.ShopID)
+        @OneToMany(() => Shop, ShopFk => ShopFk.ShopID)
         ShopFk;
 }

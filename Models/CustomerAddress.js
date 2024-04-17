@@ -19,6 +19,6 @@ export class CustomerAddress extends ModelBase
         @Column()
         CustomerLongitude;
 
-        @OneToOne(() => Customer, customer, customer.CustomerID)
+        @OneToOne(() => Customer, CustomerFk => CustomerFk.CustomerID)
         CustomerFk;
 }

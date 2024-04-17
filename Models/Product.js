@@ -26,14 +26,14 @@ export class Product extends ModelBase {
     Description;
 
     // Define the many-to-one relationship with Shop
-    @ManyToOne(() => Shop, shop => shop.ShopID)
+    @ManyToOne(() => Shop, ShopFk => ShopFk.ShopID)
     ShopFk;
 
     // Define the one-to-many relationship with ProductCategory
-    @ManyToOne(() => ProductCategory, productCategory => productCategory.ProductCategoryID)
+    @ManyToOne(() => ProductCategory, ProductCategoryFk => ProductCategoryFk.ProductCategoryID)
     ProductCategoryFk;
 
-    @OneToMany(() => Promotion, promotion, promotion.PromotionID)
-    //@JoinTable()
+    @ManyToMany(() => Promotion,PromotionFk => PromotionFk.PromotionID)
+    @JoinTable()
     PromotionFk;
 }
