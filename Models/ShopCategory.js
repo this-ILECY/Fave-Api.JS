@@ -1,17 +1,18 @@
-const ModelBase = require('./ModelBase');
-const Shop = require('./Shop'); 
+import { PrimaryGeneratedColumn,Column,OneToMany } from 'typeorm';
+import { ModelBase } from './ModelBase';
+import { Shop } from './Shop'; 
 
-class ShopCategory extends ModelBase 
+export class ShopCategory extends ModelBase 
 {
-    constructor() 
-    {
-        super(); 
+        @PrimaryGeneratedColumn()
+        ShopCategoryID;
+        
+        @Column()
+        ShopCategoryTitle; 
 
-        this.shopCategoryID = null; 
-        this.shopCategoryTitle = ''; 
-        this.shopCategoryDescription = ''; 
-        this.shopFk = []; // should be defined as a list of Shop class
-    }
+        @Column()
+        ShopCategoryDescription; 
+
+        @OneToMany(() => Shop, shop, shop.ShopID)
+        ShopFk;
 }
-
-module.exports = ShopCategory;

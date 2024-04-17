@@ -1,19 +1,12 @@
-//const { IdentityUser } = require('TypeORM');
-const Customer = require('./Customer');
-const Shop = require('./Shop');
+import { IdentityUser } from 'typeorm';
+import { Customer } from  './Customer';
+import { Shop } from './Shop';
 
-class User extends IdentityUser 
+export class User extends IdentityUser 
 {
-    constructor() 
-    {
-        super(); 
-
-        this.userCreatedDate = new Date().toISOString(); 
-        this.isActive = false; 
-        this.isDeleted = false; 
-        this.customerFk = new Customer(); 
-        this.shopFk = new Shop(); 
-    }
+        userCreatedDate = new Date().toISOString(); 
+        isActive = false; 
+        isDeleted = false; 
+        customerFk = new Customer(); 
+        shopFk = new Shop(); 
 }
-
-module.exports = User;

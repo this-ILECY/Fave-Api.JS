@@ -1,9 +1,8 @@
-class ModelBase
-{
-    constructor()
-    {
-        this.IsDeleted = false;
-        this.CreatedDate = new Date().toISOString();
-    }
+import { Column } from 'typeorm';
+export class ModelBase {
+    @Column()
+    CreatedDate;
+
+    @Column()
+    IsDeleted;
 }
-export default ModelBase;
