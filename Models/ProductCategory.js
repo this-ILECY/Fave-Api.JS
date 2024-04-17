@@ -14,6 +14,6 @@ export class ProductCategory extends ModelBase {
     ProductCategoryDescription;
 
     // Define the many-to-one relationship with Product
-    @OneToMany(() => Product, product => product.ProductCategoryID)
+    @OneToMany(() => Product, ProductFk => ProductFk.ProductCategoryID)
     ProductFk;
 }

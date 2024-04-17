@@ -35,10 +35,10 @@ export class Promotion extends ModelBase {
     IsActive;
 
     // Define the many-to-one relationship with Shop
-    @ManyToOne(() => Shop, shop => shop.ShopID)
+    @ManyToOne(() => Shop, ShopFk => ShopFk.ShopID)
     ShopFk;
 
-    @ManyToMany(() => Product, product, product.ProductID)
+    @ManyToMany(() => Product, ProductFk => ProductFk.ProductID)
     //@JoinTable()
     ProductFk;
 }

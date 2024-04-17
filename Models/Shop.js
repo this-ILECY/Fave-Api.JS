@@ -46,16 +46,16 @@ export class Shop extends ModelBase {
     UserFk;
 
     // Define the one-to-many relationship with Product
-    @OneToMany(() => Product, product => product.ShopID)
+    @OneToMany(() => Product, ProductsFk => ProductsFk.ShopID)
     ProductsFk;
     
-    @ManyToOne(() => ShopCategory , shopcategory, shopcategory.ShopCategoryID)
+    @ManyToOne(() => ShopCategory , ShopCategoryFk => ShopCategoryFk.ShopCategoryID)
     ShopCategoryFk;
 
-    @OneToOne(() => User, user,user.UserID)
+    @OneToOne(() => User, UserFk => UserFk.UserID)
     UserFk;
     
     // Define the one-to-many relationship with Promotion
-    //@OneToMany(() => Promotion, promotions => promotions.shop)
-    //promotions;
+    @OneToMany(() => Promotion, PromotionFk => PromotionFk.PromotionID)
+    PromotionFk;
 }

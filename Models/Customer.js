@@ -29,9 +29,9 @@ export class Customer extends ModelBase
         @Column()
         IsActive; 
 
-        @OneToMany(()=> CustomerAddress, customeraddress,customeraddress.CustomerAddressID)
+        @OneToMany(()=> CustomerAddress, CustAddressFk => CustAddressFk.CustomerAddressID)
         CustAddressFk;
         
-        @OneToOne(() => User, user, user.UserID)
+        @OneToOne(() => User, UserFk => UserFk.UserID)
         UserFk; 
 }
