@@ -1,28 +1,28 @@
 import { ModelBase } from "./ModelBase";
 import { Product } from "./Product";
-import { PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, ManyToOne, Entity } from 'typeorm';
 import { ProductCategory } from "./ProductCategory";
 import { Promotion } from "./Promotion";
 import { Shop } from "./Shop";
 
-
+@Entity("Product")
 export class Product extends ModelBase {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ type: "bigint" })
     ProductID;
 
-    @Column()
+    @Column({ type: "bigint" })
     ShopID;
 
-    @Column()
+    @Column({ type: "bigint" })
     ProductCategoryID;
 
-    @Column()
+    @Column({type: "bigint" , length: 30 })
     ProductCode;
 
-    @Column()
+    @Column({ type: "string" })
     ProductTitle;
 
-    @Column()
+    @Column({ type: "string" })
     Description;
 
     // Define the many-to-one relationship with Shop

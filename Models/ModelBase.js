@@ -1,8 +1,10 @@
-import { Column } from 'typeorm';
+import { Column,Entity } from 'typeorm';
+
+//@Entity()
 export class ModelBase {
-    @Column()
+    @Column({ type: "bool" })
     CreatedDate;
 
-    @Column()
+    @Column({ type: "string" })
     IsDeleted;
 }

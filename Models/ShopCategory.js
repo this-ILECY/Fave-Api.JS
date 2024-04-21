@@ -1,16 +1,17 @@
-import { PrimaryGeneratedColumn,Column,OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn,Column,OneToMany,Entity } from 'typeorm';
 import { ModelBase } from './ModelBase';
 import { Shop } from './Shop'; 
 
+@Entity("ShopCategory")
 export class ShopCategory extends ModelBase 
 {
-        @PrimaryGeneratedColumn()
+        @PrimaryGeneratedColumn({type: "bigint" , length: 20 })
         ShopCategoryID;
         
-        @Column()
+        @Column({ type:"string" ,  length: 300 })
         ShopCategoryTitle; 
 
-        @Column()
+        @Column({ type: "string" })
         ShopCategoryDescription; 
 
         @OneToMany(() => Shop, ShopFk => ShopFk.ShopID)

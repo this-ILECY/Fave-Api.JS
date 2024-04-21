@@ -1,41 +1,42 @@
-import { PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
+import { PrimaryGeneratedColumn, ManyToOne, Column , Entity, JoinTable } from 'typeorm';
 import { Shop } from './Shop';
 import { ModelBase } from './ModelBase';
 import { Product } from './Product';
 
+@Entity("Promotion")
 export class Promotion extends ModelBase {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ type: "bigint" })
     PromotionID;
 
-    @Column()
+    @Column({ type: "bigint" })
     ProductID;
 
-    @Column()
+    @Column({ type: "bigint" })
     ShopID;
 
-    @Column()
+    @Column({ type: "bigint" })
     BasePrice;
 
-    @Column()
+    @Column({ type: "bigint" })
     DiscountPrice;
 
-    @Column()
+    @Column({ type: "int" })
     Stock;
 
-    @Column()
+    @Column({ type: "int" })
     QualityGrade;
 
-    @Column()
+    @Column({ type: "datetime" })
     EndDate;
 
-    @Column()
+    @Column({ type: "datetime" })
     StartDate;
 
-    @Column()
+    @Column({ type: "bool" })
     IsActive;
 
     // Define the many-to-one relationship with Shop
-    @ManyToOne(() => Shop, ShopFk => ShopFk.ShopID)
+    @ManyToOne((type) => Shop, ShopFk => ShopFk.ShopID)
     ShopFk;
 
     @ManyToMany(() => Product, ProductFk => ProductFk.ProductID)

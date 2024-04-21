@@ -1,16 +1,17 @@
-import { PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, OneToMany, Entity } from 'typeorm';
 import { Product } from './Product';
 import { ModelBase } from './ModelBase';
 
+@Entity("ProductCategory")
 export class ProductCategory extends ModelBase {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({type: "bigint" , length: 20 })
     ProductCategoryID;
 
-    @Column()
+    @Column({type: "string" , length: 300 })
     ProductCategoryTitle;
 
-    @Column()
+    @Column({ type: "string" })
     ProductCategoryDescription;
 
     // Define the many-to-one relationship with Product

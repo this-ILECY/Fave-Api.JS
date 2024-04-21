@@ -1,32 +1,33 @@
-import { Column,PrimaryGeneratedColumn,OneToMany,OneToOne } from 'typeorm';
+import { Column,PrimaryGeneratedColumn,OneToMany,OneToOne,Entity } from 'typeorm';
 import { ModelBase } from './ModelBase';
 import { CustomerAddress } from './CustomerAddress';
 import { User } from './User';
 
+@Entity("Customer")
 export class Customer extends ModelBase 
 {
-        @PrimaryGeneratedColumn()
+        @PrimaryGeneratedColumn({type: "bigint"})
         CustomerID;
         
-        @Column()
+        @Column({type: "bigint" , length: 30 })
         UserID; 
 
-        @Column()
+        @Column({type: "string" , length:30 })
         CustomerFirstName; 
 
-        @Column()
+        @Column({type: "string"})
         CustomerLastName;
 
-        @Column()
+        @Column({type: "string"})
         Telephone; 
 
-        @Column()
+        @Column({type: "string" , length: 50 })
         CellPhone; 
 
-        @Column()
+        @Column({type: "string"})
         Email; 
 
-        @Column()
+        @Column({type: "bool"})
         IsActive; 
 
         @OneToMany(()=> CustomerAddress, CustAddressFk => CustAddressFk.CustomerAddressID)

@@ -1,49 +1,47 @@
-import { PrimaryGeneratedColumn, Column, OneToMany,OneToOne,ManyToOne } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, OneToMany,OneToOne,ManyToOne, Entity } from 'typeorm';
 import { ModelBase } from './ModelBase';
 import { User } from './User';
 import { Product } from './Product';
 import { ShopCategory } from './ShopCategory';
 import { Promotion } from './Promotion';
 
+@Entity("Shop")
 export class Shop extends ModelBase {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ type: "bigint" })
     ShopID;
 
-    @Column()
+    @Column({ type: "bigint" })
     UserID;
 
-    @Column()
+    @Column({type: "bigint" , length: 30 })
     ShopCategoryID;
 
-    @Column()
+    @Column({type: "string" , length: 300 })
     ShopName;
 
-    @Column()
+    @Column({ type: "string" })
     ShopAddress;
 
-    @Column()
+    @Column({ type: "string" })
     ShopBanner;
 
-    @Column()
+    @Column({ type: "string" })
     ShopAvatar;
 
-    @Column()
+    @Column({ type: "string" })
     TelePhone;
 
-    @Column()
+    @Column({ type: "string" })
     CellPhone;
 
-    @Column()
+    @Column({ type: "decimal" })
     ShopLatitude;
 
-    @Column()
+    @Column({ type: "decimal" })
     ShopLongitude;
 
-    @Column()
+    @Column({ type: "bool" })
     IsActive;
-
-    @Column()
-    UserFk;
 
     // Define the one-to-many relationship with Product
     @OneToMany(() => Product, ProductsFk => ProductsFk.ShopID)

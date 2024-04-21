@@ -7,13 +7,13 @@
     "database": "mydatabase",
     "synchronize": true,
     "logging": false,
-    "entities": ["src/entities/**/*.ts"],
-    "migrations": ["src/migration/**/*.ts"],
-    "subscribers": ["src/subscriber/**/*.ts"],
+    "entities": ["E:/VSCode projects/Fave/Fave-Api.JS/Models/*.js"],
+    "migrations": ["E:/VSCode projects/Fave/Fave-Api.JS/Migrations/*.js"],
+    "subscribers": ["E:/VSCode projects/Fave/Fave-Api.JS/Subscribers/*.js"],
     "cli": {
-      "entitiesDir": "src/entities",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": "E:/VSCode projects/Fave/Fave-Api.JS/Models/*.js",
+      "migrationsDir": "E:/VSCode projects/Fave/Fave-Api.JS/Migrations/*.js",
+      "subscribersDir": "E:/VSCode projects/Fave/Fave-Api.JS/Subscribers/*.js"
     }
   }
   

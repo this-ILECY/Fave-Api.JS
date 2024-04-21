@@ -1,22 +1,23 @@
-import { Column,PrimaryGeneratedColumn,OneToOne } from 'typeorm';
+import { Column,PrimaryGeneratedColumn,OneToOne,Entity } from 'typeorm';
 import { ModelBase } from './ModelBase';
 import { Customer } from './Customer';
 
+@Entity("CustomerAddress")
 export class CustomerAddress extends ModelBase 
 {
-        @PrimaryGeneratedColumn()
+        @PrimaryGeneratedColumn({ type:"bigint" })
         CustomerAddressID;
 
-        @Column()
+        @Column({type: "bigint" , length: 20 })
         CustomerID;
 
-        @Column() 
+        @Column({ type: "string" }) 
         AddressTitle;
         
-        @Column()
+        @Column({ type: "decimal" })
         CustomerLatitude;
         
-        @Column()
+        @Column({ type: "decimal" })
         CustomerLongitude;
 
         @OneToOne(() => Customer, CustomerFk => CustomerFk.CustomerID)
